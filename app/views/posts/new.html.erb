@@ -1,0 +1,11 @@
+<div class="container">	
+  <div class="form-group">
+    <h2>Створити нову статтю</h2>
+    <%= simple_form_for @post, validate: true do |f| %>
+      <%= f.input_field :title, class: "form-control", placeholder: "Назва статті", validate: {presence: true, length: {maximum: 100}} ,include_blank: false  %><br>
+      <%= f.association :category%><br>
+      <%= f.rich_text_area :body, validate: {presence: true}, include_blank: false  %><br>
+      <%= f.button :submit, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

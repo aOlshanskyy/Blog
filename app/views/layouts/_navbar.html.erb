@@ -1,0 +1,41 @@
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="/">
+    Blog
+  </a>
+</ul>
+  <ul class="nav navbar-nav navbar-right">
+    <% if current_user.nil? %>
+      <li>
+        <%= link_to user_session_path, class: "btn btn-outline-primary" do %>
+          Login
+        <%end%>
+      </li>
+      <% else %>
+      <form class="form-inline">
+        <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-outline-primary"  do %>
+          Logout
+        <%end%> 
+        <%= link_to new_post_path, class: "btn btn-primary btn-sm"  do %>
+          New Post
+        <%end%>
+      </form>
+    <% end %>
+  </ul>
+</nav>
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <%=link_to root_path, class: "nav-link" do%>Всі<%end%>
+  </li>
+  <li class="nav-item">
+    <%=link_to categories_path(1), class: "nav-link" do%>Спорт<%end%>
+  </li>
+  <li class="nav-item">
+    <%=link_to categories_path(2), class: "nav-link" do %>Політика<%end%>
+  </li>
+  <li class="nav-item">
+    <%=link_to categories_path(3), class: "nav-link" do %>Історія <%end%>
+  </li>
+  <li class="nav-item">
+    <%=link_to categories_path(4), class: "nav-link" do %>Здоров`я<%end%>
+  </li>
+</ul>

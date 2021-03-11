@@ -1,0 +1,28 @@
+<div class="row md-2">
+	<div class="col-md-12">
+		<div class="row g-0 border rounded overflow-hidden flex-md-row md-4 shad ow-sm  h-md-250 position-relative">
+			<div class="col p-4 d-flex flex-column position-static">
+				<strong class="d-inline-block md-2 text-primary"><%=post.category.name%></strong>
+				<h3 class="md-0"><%= post.title%></h3>
+				<div class="d-flex justify-content-between">
+					<div class="md-1 text-muted"><%= post.created_at.to_datetime.strftime("%B %d, at %I:%M ")%></div>
+					<p class="text-danger">Коментарів: <%=post.comments.count%></p>
+				</div>	
+				<p class="card-text md-auto"><%= truncate(strip_tags(post.body.to_s), length: 500) %></p>
+				<div class="md-12" style="text-align: center;">Автор: <%= link_to authors_path(post.user), class: "text-primary"  do %>
+			          <%=post.user.email%>
+			        <%end%></div><br>
+				<div class="md-12">
+				<span class="d-flex justify-content-between">
+					<%= link_to post_path(post), class: "btn btn-primary btn-sm"  do %>
+			          READ MORE
+			        <%end%>
+			        <% if current_user && current_user.id === post.user_id %>
+		        	   <%= link_to 'Видалити', [post], method: :delete, remote: true, data: { confirm: 'Ви впевнені?' }, class: "btn btn-danger btn-sm" %>
+			           <%end%>
+				</span>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>

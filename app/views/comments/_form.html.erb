@@ -1,0 +1,6 @@
+<%= simple_form_for Comment.new, validate: true do |f| %>
+  <%= f.input :object_id, as: :hidden ,input_html:{value: object.id} %>
+  <%= f.input :object_type,as: :hidden, input_html:{value: object.class.name}%>
+  <%= f.input_field :text, label: false , as: :text, placeholder: "Введіть коментар", class:"form-control"%><br>
+  <%= f.button :submit,class:"btn-primary"%>
+<% end %>
